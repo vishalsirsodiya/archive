@@ -1,0 +1,7 @@
+services:
+  archive.twig.extension:
+    class: Drupal\archive\TwigExtension\ArchiveTableExtension
+    arguments: ['@renderer']
+    tags:
+      - { name: twig.extension }
+

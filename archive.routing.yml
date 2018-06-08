@@ -1,0 +1,35 @@
+
+archive.user_interface_form:
+  path: '/admin/config/archive/userinterface'
+  defaults:
+    _form: '\Drupal\archive\Form\UserInterfaceForm'
+    _title: 'UserInterfaceForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+
+archive.archive_controller_calender:
+  path: '/archive/calender'
+  defaults:
+    _controller: '\Drupal\archive\Controller\ArchiveController::calender'
+    _title: 'Archives'
+  requirements:
+    _permission: 'access content'
+
+archive.archive_controller_archive:
+  path: '/archive/{date}'
+  defaults:
+    _controller: '\Drupal\archive\Controller\ArchiveController::archive'
+    _title: 'Archive Page'
+  requirements:
+    _permission: 'access content'
+
+archive.archive_controller_archive_type:
+  path: '/archive/{type}'
+  defaults:
+    _controller: '\Drupal\archive\Controller\ArchiveController::archiveType'
+    _title: 'Archive Page'
+  requirements:
+    _permission: 'access content'

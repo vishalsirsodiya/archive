@@ -1,0 +1,7 @@
+archive.user_interface_form:
+  title: 'UserInterfaceForm'
+  route_name: archive.user_interface_form
+  description: 'Content types available in archive'
+  parent: system.admin_config_system
+  weight: 99
+

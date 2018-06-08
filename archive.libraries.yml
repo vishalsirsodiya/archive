@@ -1,0 +1,7 @@
+calender:
+  version: 1.x
+  css:
+    layout:
+      css/calender.css: {}
+    theme:
+      css/calender.css: {}

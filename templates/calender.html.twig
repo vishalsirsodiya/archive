@@ -1,0 +1,24 @@
+{{ attach_library('archive/calender') }}
+<!-- Add you custom twig html here -->
+<div class="container-calender cal-border">
+	<div class="row">
+		<div class="cal cal-head text-center">{{ calender.month_name }} {{ calender.year }}</div>
+	</div>
+	<div class="row">
+		{% for key, value in calender.days_of_week  %}
+		<div class="cal cal-day text-center"><span class="cal-cel">{{ value }}</span></div>
+		{% endfor %}
+	</div>
+	<div class="row">
+		{% for i in 1..(calender.day_of_week -1) %}
+			<div class="cal cal-blank text-center"><span class="cal-cel">&nbsp;</span></div>
+		{% endfor %}
+
+		{% for i in 0..calender.number_days %}
+			<div class="cal cal-date text-center"><span class="cal-cel">{% if i > 0 %} {% if calender.current_date == i %} <a href="{{ calender.url }}">{{ i }}</a> {% else %} {{ i }} {% endif %} {% endif %}</span></div>
+			{% if  (i + calender.day_of_week)% 7 == 0  %}
+				</div><div class="row">
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>

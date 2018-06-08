@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains archive.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function archive_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the archive module.
+    case 'help.page.archive':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Allows visitors to view content filtered by date or node type.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+  /**
+   * 
+   */
+  function contentTypeList() {
+  
+    // Get all content types.
+    $contentTypes = \Drupal::service('entity.manager')->getStorage('node_type')->loadMultiple();
+    $contentTypesList = [];
+    foreach ($contentTypes as $contentType) {
+        $contentTypesList[$contentType->id()] = $contentType->label();
+    }
+
+    return $contentTypesList;
+  }
+
+
+/**
+ * Implements hook_theme().
+ */
+function archive_theme() {
+  return [
+    'calender' => [
+      'variables' => ['calender' => "$calender->calender()"],
+    ],
+    'archive_page' => [
+      'variables' => ['archive_page' => "archive page"],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function archive_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $content_page = "archive_page";
+  $suggestions[] = 'page__'.$content_page;
+}
